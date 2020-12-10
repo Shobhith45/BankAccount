@@ -4,7 +4,7 @@ fun main() {
 
     var account: Account? = null
     loop@ do {
-        println("===CHOICE===\n1.Create Account\n2.Get Balance\n3.Deposite\n4.With Draw\n5.Get Account Details\n6.Account Statement\n7.Add Email To Your Account\n8.Add Phone Number to Account \n9.Exit")
+        println("===CHOICE===\n1.Create Account\n2.Get Balance\n3.Deposite\n4.With Draw\n5.Get Account Details\n6.Account Statement\n7.Add Email To Your Account\n8.Add Phone Number to Account \n9.Switch Account \n10.Exit")
         when (readLine()!!.toInt()) {
             1 -> {
                 println("Enter your name")
@@ -60,7 +60,19 @@ fun main() {
                     println("Phone Number is not Valid")
                 }
             }
-            9 -> break@loop
+            9->{
+                try {
+                    println("Enter Account Number")
+                    account=AccountManager.getAccount(readLine()!!.toLong())
+                    if(account==null){
+                        throw  Exception()
+                    }
+                } catch (e: Exception) {
+                    println("Account number is not Valid")
+                }
+
+            }
+            10 -> break@loop
             else -> println("Invalid Option")
 
 
