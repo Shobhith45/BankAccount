@@ -1,7 +1,7 @@
 import com.sun.source.tree.CaseTree
 
 open class CaSaAccount:Account{
-    constructor(account_Holder_Name:String,account_Balance:Double):super(account_Holder_Name,account_Balance)
+    constructor(account_Holder_Name:String,account_Balance:Double,intrestRate:Float):super(account_Holder_Name,account_Balance,intrestRate)
 
     override fun Deposite(amount: Double) {
         this.account_Balance += amount
@@ -17,11 +17,15 @@ open class CaSaAccount:Account{
             addToStatement( " Withdrawn " + amount + " Balance:" + this.account_Balance)
         }
     }
+
+    override fun Intrest() {
+        this.account_Balance+=this.account_Balance*this.intrestRate/36500
+    }
 }
 class SavingsAccount:CaSaAccount{
-    constructor(account_Holder_Name:String,account_Balance:Double):super(account_Holder_Name,account_Balance)
+    constructor(account_Holder_Name:String,account_Balance:Double,intrestRate:Float):super(account_Holder_Name,account_Balance,intrestRate)
 }
 
 class CurrentAccount:CaSaAccount{
-    constructor(account_Holder_Name:String,account_Balance:Double):super(account_Holder_Name,account_Balance)
+    constructor(account_Holder_Name:String,account_Balance:Double,intrestRate:Float):super(account_Holder_Name,account_Balance,intrestRate)
 }

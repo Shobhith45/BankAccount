@@ -10,6 +10,9 @@
             accountList[accNum] = account
 
         }
-
+        fun IntrestUpdate(){
+            for(i in accountList.values)
+                i?.Intrest()
+        }
     }
 }
