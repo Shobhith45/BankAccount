@@ -1,12 +1,8 @@
 abstract class Account {
 
     companion object {
-        var nextAccNum = 111111111111L
-
-
+        var nextAccNum = 1111111111111L
     }
-
-
 
     protected var account_Holder_Name: String? = null
     protected var account_Number: Long = 0
@@ -14,13 +10,11 @@ abstract class Account {
     protected var email_Address: String? = null
     protected var phone_Number: Long? = 0
     protected var account_Statement = mutableListOf<String?>()
-    protected var intrestRate:Float = 0.0f
 
-    constructor(account_Holder_Name: String, account_Balance: Double,intrestRate:Float) {
+    constructor(account_Holder_Name: String, account_Balance: Double) {
         this.account_Holder_Name = account_Holder_Name
         this.account_Balance = account_Balance
         this.account_Number = getNextAccountNumber()
-        this.intrestRate=intrestRate
         AccountManager.addAccountList(account_Number, this)
 
     }
@@ -44,9 +38,6 @@ abstract class Account {
     fun getBalance(): Double {
         return this.account_Balance;
     }
-    fun setBalance(balance:Double){
-        this.account_Balance=balance
-    }
 
     private fun getNextAccountNumber(): Long {
         return Account.nextAccNum++
@@ -54,7 +45,7 @@ abstract class Account {
 
     open fun getAccountDetails() {
         println(
-            """
+                """
                 Account Name:${this.account_Holder_Name}
                 Account Number:${this.account_Number}
                 Balance:${this.account_Balance}

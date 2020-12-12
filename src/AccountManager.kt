@@ -1,6 +1,6 @@
  open class AccountManager {
 
-    companion object {
+     companion object {
         private val accountList = mutableMapOf<Long,Account?>()
         fun getAccount(accNum: Long): Account? {
 
